@@ -1,0 +1,21 @@
+<form style="width: 35%; " class="p-5" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input required minlength="3" autocomplete="off" maxlength="10" pattern="banana" ngModel name="firstName"
+            #firstName="ngModel" (change)="log(firstName)" type="text" id="firstName" class="form-control">
+
+
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors.required">First Name is Required</div>
+            <div *ngIf="firstName.errors.minlength">First Name should be 3</div>
+            <div *ngIf="firstName.errors.maxlength">First Name should be maximum
+                {{ firstName.errors.minlength.requiredLength}} characters</div>
+            <div *ngIf="firstName.errors.pattern">First Name does not match pattern</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comments</label>
+        <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+</form>
