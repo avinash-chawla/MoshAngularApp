@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { DataService } from './services/data.service';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { HomeComponent } from './home/home.component';
+import { GithubFollowersService } from './services/github-followers.service';
 
 
 @NgModule({
@@ -25,6 +29,9 @@ import { DataService } from './services/data.service';
     ContactFormComponent,
     SignupFormComponent,
     PostsComponent,
+    GithubFollowersComponent,
+    GithubProfileComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -35,7 +42,8 @@ import { DataService } from './services/data.service';
     HttpClientModule
   ],
   providers: [PostService,
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+    GithubFollowersService
   ],
   bootstrap: [AppComponent]
 })
